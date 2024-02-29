@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Phone Giveaway Countdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #463a44;
+            color: #f0f7f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #e9e9f3;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #f0caca;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .countdown-container {
+            margin-top: 20px;
+        }
+        .countdown {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 36px;
+            background-color: #07a2ad;
+            color: #f0f7f0;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .end-date {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #270303;
+        }
+        .phone-image {
+            max-width: 300px;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(161, 127, 127, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Old iPhone Giveaway</h1>
+        <div class="image-container">
+            <img class="phone-image" src="c:\Users\kevwe\Downloads\download (1).jpeg" alt="Old Phone">
+        </div>
+        <div class="countdown-container">
+            <div class="countdown" id="countdown"></div>
+            <div class="end-date">Giveaway ends on Thursday, November 28th 2024 at 00:00 AM</div>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Nov 28, 2024 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        var x = setInterval(function() {
+
+            // Get the current date and time
+            var now = new Date().getTime();
+
+            // Calculate the distance between now and the countdown date
+            var distance = countDownDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the countdown
+            document.getElementById("countdown").innerHTML = pad(days, 2) + "d " + pad(hours, 2) + "h "
+            + pad(minutes, 2) + "m " + pad(seconds, 2) + "s ";
+
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+
+        // Function to pad single digit numbers with leading zeros
+        function pad(num, size) {
+            var s = num + "";
+            while (s.length < size) s = "0" + s;
+            return s;
+        }
+    </script>
+</body>
+</html>
